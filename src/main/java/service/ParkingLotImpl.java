@@ -1,6 +1,7 @@
 package service;
 
 import Model.Car;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,17 +48,17 @@ public class ParkingLotImpl implements ParkingLot {
         for (int i = 0; i < capacity; i++) {
             Car car = parkingLotMap.get(i);
             if (car != null) {
-                System.out.println(i + 1 + " " + car.getRegistrationNumber() + " " + car.getColour());
+                System.out.println(i + 1 + "     " + car.getRegistrationNumber() + " " + car.getColour());
             }
         }
     }
 
     public void getSlotNumbersForCars(String colour) {
         List<Integer> res = new ArrayList<Integer>();
-        for(int i=0;i<capacity;i++){
+        for (int i = 0; i < capacity; i++) {
             Car r = parkingLotMap.get(i);
-            if(r != null && colour.equals(r.getColour())){
-                res.add(i+1);
+            if (r != null && colour.equals(r.getColour())) {
+                res.add(i + 1);
             }
         }
         printIntegerList(res);
@@ -75,11 +76,11 @@ public class ParkingLotImpl implements ParkingLot {
     }
 
     public int getSlotNumberForRegistrationNumber(String registrationNumber) {
-        int res=-1;
-        for(int i=0;i<capacity;i++){
+        int res = -1;
+        for (int i = 0; i < capacity; i++) {
             Car car = parkingLotMap.get(i);
-            if(car != null && registrationNumber.equals(car.getRegistrationNumber())){
-                res = i+1;
+            if (car != null && registrationNumber.equals(car.getRegistrationNumber())) {
+                res = i + 1;
             }
         }
         return res;
@@ -89,18 +90,18 @@ public class ParkingLotImpl implements ParkingLot {
         System.exit(0);
     }
 
-    private void printStringList(List<String> list){
-        int i=0;
-        for(i=0;i<list.size()-1;i++){
-            System.out.print(list.get(i)+", ");
+    private void printStringList(List<String> list) {
+        int i = 0;
+        for (i = 0; i < list.size() - 1; i++) {
+            System.out.print(list.get(i) + ", ");
         }
         System.out.println(list.get(i));
     }
 
-    private void printIntegerList(List<Integer> list){
-        int i=0;
-        for(i=0;i<list.size()-1;i++){
-            System.out.print(list.get(i)+", ");
+    private void printIntegerList(List<Integer> list) {
+        int i = 0;
+        for (i = 0; i < list.size() - 1; i++) {
+            System.out.print(list.get(i) + ", ");
         }
         System.out.println(list.get(i));
     }

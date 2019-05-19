@@ -1,11 +1,6 @@
 package service;
 
 import Model.Car;
-import Model.ParkingSlot;
-import exception.ParkingLotException;
-
-import java.util.List;
-
 public interface ParkingLot {
     public int parkCar(Car car);
     public void departCar(int slotNumber);
