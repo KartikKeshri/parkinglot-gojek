@@ -48,12 +48,12 @@ public class ParkingLotImpl implements ParkingLot {
         for (int i = 0; i < capacity; i++) {
             Car car = parkingLotMap.get(i);
             if (car != null) {
-                System.out.println(i + 1 + "     " + car.getRegistrationNumber() + " " + car.getColour());
+                System.out.println(i + 1 + "        " + car.getRegistrationNumber() + "   " + car.getColour());
             }
         }
     }
 
-    public void getSlotNumbersForCars(String colour) {
+    public List<Integer> getSlotNumbersForCars(String colour) {
         List<Integer> res = new ArrayList<Integer>();
         for (int i = 0; i < capacity; i++) {
             Car r = parkingLotMap.get(i);
@@ -62,9 +62,10 @@ public class ParkingLotImpl implements ParkingLot {
             }
         }
         printIntegerList(res);
+        return res;
     }
 
-    public void getRegistrationNumbersForCars(String colour) {
+    public List<String> getRegistrationNumbersForCars(String colour) {
         List<String> res = new ArrayList<String>();
         for (int i = 0; i < capacity; i++) {
             Car car = parkingLotMap.get(i);
@@ -73,6 +74,7 @@ public class ParkingLotImpl implements ParkingLot {
             }
         }
         printStringList(res);
+        return res;
     }
 
     public int getSlotNumberForRegistrationNumber(String registrationNumber) {
@@ -104,5 +106,21 @@ public class ParkingLotImpl implements ParkingLot {
             System.out.print(list.get(i) + ", ");
         }
         System.out.println(list.get(i));
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getAvailableSlots() {
+        return availableSlots;
+    }
+
+    public HashMap<Integer, Car> getParkingLotMap() {
+        return parkingLotMap;
+    }
+
+    public TreeSet<Integer> getFreeSlots() {
+        return freeSlots;
     }
 }

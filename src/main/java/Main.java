@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 class Main {
     private static ParkingLot parkingLot = null;
+
     public static void main(String args[]) {
         Scanner sc;
         if (args.length > 0) {
@@ -17,7 +18,7 @@ class Main {
             try {
                 sc = new Scanner(f);
                 command(sc);
-            }catch (FileNotFoundException ex) {
+            } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
             }
         } else {
@@ -43,7 +44,7 @@ class Main {
         }
     }
 
-    private static void executeCommand(String []commands) throws ParkingLotException{
+    private static void executeCommand(String[] commands) throws ParkingLotException {
         Scanner sc = new Scanner(System.in);
         if (commands[0].equals(Constants.CREATE_PARKING_LOT)) {
             createParkingLot(Integer.parseInt(commands[1]));
@@ -51,23 +52,21 @@ class Main {
             String regNo = commands[1];
             String colour = commands[2];
             int slotNumber = parkingLot.parkCar(new Car(regNo, colour));
-            if(slotNumber != -1){
-                System.out.println("Allocated Slot Number: "+slotNumber);
-            }
-            else
+            if (slotNumber != -1) {
+                System.out.println("Allocated Slot Number: " + slotNumber);
+            } else
                 System.out.println("Sorry, parking lot is full");
         } else if (commands[0].equals(Constants.LEAVE)) {
             int slotNumber = Integer.parseInt(commands[1]);
             parkingLot.departCar(slotNumber - 1);
-            System.out.println("Slot number "+ slotNumber + " is free");
+            System.out.println("Slot number " + slotNumber + " is free");
         } else if (commands[0].equals(Constants.LOT_STATUS)) {
             parkingLot.getParkinglotStatus();
         } else if (commands[0].equals(Constants.SEARCH_SLOT_BY_CAR)) {
             int slotNumber = parkingLot.getSlotNumberForRegistrationNumber(commands[1]);
-            if(slotNumber != -1){
+            if (slotNumber != -1) {
                 System.out.println(slotNumber);
-            }
-            else
+            } else
                 System.out.println("Not Found");
         } else if (commands[0].equals(Constants.SEARCH_CAR_BY_COLOUR)) {
             parkingLot.getRegistrationNumbersForCars(commands[1]);
@@ -78,7 +77,7 @@ class Main {
         }
     }
 
-    public static void createParkingLot(int capacity) throws ParkingLotException{
+    public static void createParkingLot(int capacity) throws ParkingLotException {
         if (parkingLot != null) throw new ParkingLotException("Parking lot is already initialized!");
         parkingLot = new ParkingLotImpl(capacity);
         System.out.println("Created a parking lot with " + capacity + " slots");
