@@ -1,5 +1,4 @@
 import Model.Car;
-import Model.ParkingSlot;
 import constants.Constants;
 import exception.ParkingLotException;
 import service.ParkingLot;
@@ -12,8 +11,6 @@ import java.util.Scanner;
 
 class Main {
     private static ParkingLot parkingLot = null;
-    private static ParkingSlot slot = null;
-
     public static void main(String args[]) {
         if (args.length > 0) {
             readFile(args[0],parkingLot);

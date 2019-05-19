@@ -7,6 +7,7 @@ public class Car {
     public Car() {
 
     }
+
     public Car(String registrationNumber, String colour) {
         this.registrationNumber = registrationNumber;
         this.colour = colour;
